@@ -1,2 +1,1 @@
-# Portf-lio
-Projetos desenvolvidos:
+- Projetos desenvolvidos:
