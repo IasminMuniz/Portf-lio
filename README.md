@@ -1,4 +1,4 @@
-# 📊 Portfólio de Análise de Dados e Desenvolvimento
+# 📊 Portfólio de Análise de Dados e BI
 
 Bem-vindo(a) ao meu portfólio! Este repositório contém a estrutura do meu site pessoal, além dos arquivos originais dos meus projetos em Power BI, Python e SQL.
 
