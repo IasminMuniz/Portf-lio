@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Códigos & Projetos</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --card-bg: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+        }
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
+        
+        .code-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        pre {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Portfólio.</div>
+        <div class="nav-links">
+            <a href="index.html">Página Principal</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="index.html" class="btn-voltar">← Voltar para Dashboards</a>
+        
+        <h2>Projetos em Código</h2>
+        <p>Abaixo estão algumas demonstrações de scripts em Python e consultas SQL que utilizo para extração e tratamento de dados.</p>
+
+        <!-- Exemplo de Projeto em Código -->
+        <div class="code-card">
+            <h3>Automação de Limpeza de Dados (Python)</h3>
+            <p>Script utilizando Pandas para tratar valores nulos e padronizar colunas antes da importação para o Power BI.</p>
+            <pre><code>
+import pandas as pd
+
+# Carregar dados
+df = pd.read_csv('vendas_brutas.csv')
+
+# Preencher valores nulos
+df['faturamento'].fillna(0, inplace=True)
+
+# Padronizar nomes das colunas
+df.columns = df.columns.str.lower().str.replace(' ', '_')
+
+# Exportar base limpa
+df.to_csv('vendas_limpas.csv', index=False)
+print("Dados limpos com sucesso!")
+            </code></pre>
+        </div>
+
+        <!-- Exemplo de Projeto SQL -->
+        <div class="code-card">
+            <h3>Consulta de Faturamento por Cliente (SQL)</h3>
+            <p>Query utilizada no banco de dados para criar a view consumida pelo dashboard de vendas.</p>
+            <pre><code>
+SELECT 
+    c.nome_cliente,
+    COUNT(v.id_venda) as total_pedidos,
+    SUM(v.valor_total) as faturamento
+FROM clientes c
+INNER JOIN vendas v ON c.id_cliente = v.id_cliente
+WHERE YEAR(v.data_venda) = 2023
+GROUP BY c.nome_cliente
+ORDER BY faturamento DESC;
+            </code></pre>
+        </div>
+
+    </div>
+
+</body>
+</html>
